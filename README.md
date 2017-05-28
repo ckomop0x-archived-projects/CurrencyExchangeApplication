@@ -2,6 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Currency Exchange App
 
+TODO!!! Rewrite ReadMe due to current application
 
 ## Folder Structure
 
