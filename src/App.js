@@ -10,6 +10,7 @@ import {
 // Compoponents
 import AppBarContainer from './components/AppBarContainer';
 import CurrencyLine from './components/CurrencyLine';
+import CurrencySelector from './components/CurrencySelector';
 
 // Init Tap event
 injectTapEventPlugin();
@@ -25,8 +26,8 @@ class App extends Component {
 			method: 'GET',
 			url: 'https://openexchangerates.org/api/latest.json?app_id=33f0f3ee6c77474f9f929749f5286615',
 			seconds: 0,
-			currencyOne: 'EUR',
-			currencyTwo: 'USD',
+			currencyOne: 'RUB',
+			currencyTwo: 'EUR',
 			currencyOneValue: '',
 			currencyTwoValue: '',
 		};
@@ -46,11 +47,7 @@ class App extends Component {
 			.then((result) => {
 				// console.log(result);
 				this.setState({
-					rates: {
-						USD: 1,
-						EUR: result.data.rates.EUR,
-						GBP: result.data.rates.GBP
-					}
+					rates: result.data.rates
 				});
 			})
 			.catch((err) => {
@@ -86,11 +83,33 @@ class App extends Component {
 		this.setState({ currencyOneValue: converter(this.state.rates[this.state.currencyTwo], this.state.rates[this.state.currencyOne], event.target.value) });
 	}
 
+	handleChangeOne = (event, index, value) => {
+		console.log(event, index, value, this);
+		console.log(value, this.state.currencyOneValue)
+		this.setState({
+			currencyOne: value
+		});
+		this.setState({
+			currencyTwoValue: converter(this.state.rates[this.state.currencyOne], this.state.rates[this.state.currencyTwo], this.state.currencyOneValue)
+		});
+	};
+	handleChangeTwo = (event, index, value) => {
+		console.log(event, index, value, this);
+		console.log(value, this.state.currencyTwoValue)
+		this.setState({
+			currencyTwo: value
+		});
+		this.setState({
+			currencyOneValue: converter(this.state.rates[this.state.currencyTwo], this.state.rates[this.state.currencyOne], this.state.currencyTwoValue)
+		});
+	};
+
 	render() {
 		const {
 			currencyOne,
 			currencyTwo,
 			currencyOneValue,
+			currencyTwoValue,
 			rates
 		} = this.state;
 		return (
@@ -104,9 +123,15 @@ class App extends Component {
 
 			>
 				<AppBarContainer />
-				<div style={{ textAlign: 'center', margin: 20	}} >
-					1 {currencyOne} = {rates && rates.EUR} {currencyTwo}
-				</div>
+				<CurrencySelector
+					currencyOne={currencyOne}
+					currencyTwo={currencyTwo}
+					currencyOneValue={currencyOneValue}
+					currencyTwoValue={currencyTwoValue}
+					rates={rates}
+					handleChangeOne={this.handleChangeOne.bind(this)}
+					handleChangeTwo={this.handleChangeTwo.bind(this)}
+				/>
 				<CurrencyLine
 					floatingLabelText={currencyOne}
 					value={currencyOneValue}
@@ -114,8 +139,8 @@ class App extends Component {
 					onBlur={this.changeCurrencyOneValue.bind(this)}
 				/>
 				<CurrencyLine
-					floatingLabelText={this.state.currencyTwo}
-					value={this.state.currencyTwoValue}
+					floatingLabelText={currencyTwo}
+					value={currencyTwoValue}
 					onChange={this.changeCurrencyTwoValue.bind(this)}
 					onBlur={this.changeCurrencyTwoValue.bind(this)}
 				/>
