@@ -11,8 +11,9 @@ import {
 } from '../helpers/';
 
 const className = style({
-	width: 200,
-	margin: 'auto'
+	width: '320px',
+	margin: 'auto',
+	textAlign: 'center'
 });
 
 const CurrencySelector = (props) => {
@@ -35,7 +36,16 @@ const CurrencySelector = (props) => {
 				currencyOneValue={currencyOneValue}
 				currencyTwoValue={currencyTwoValue}
 			/>
-			= {rates && converter(rates[currencyOne], rates[currencyTwo], 1, 4)}
+			<span
+				style={{
+					height: '60px',
+					lineHeight: '60px',
+					verticalAlign: 'top',
+					display: 'inline-block'
+				}}
+			>
+				{rates && converter(rates[currencyOne], rates[currencyTwo], 1, 4)}
+			</span>
 			<DropdownSelector
 				rates={rates}
 				currency={currencyTwo}
