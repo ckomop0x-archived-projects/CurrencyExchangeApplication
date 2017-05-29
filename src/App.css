@@ -1,0 +1,26 @@
+@media (min-width: 320px) {
+  .App{
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    height: auto;
+    box-shadow: none;
+  }
+  .container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+  }
+}
+
+@media (min-width: 640px) {
+  .App{
+    box-shadow: 0 0 2px 4px hsla(0, 0%, 0%, 0.12);
+    height: auto;
+  }
+  .container {
+    align-items: center;
+
+  }
+}

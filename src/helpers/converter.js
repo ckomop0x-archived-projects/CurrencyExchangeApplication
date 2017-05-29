@@ -1,6 +1,10 @@
 import { pow } from './';
-
-export const converter = (currencyOne = 0, currencyTwo = 0, value = 0, floor = 2) => {
-	const result = (Math.floor((value * (currencyTwo / currencyOne)) * pow(10, floor))) / pow(10, floor);
-	return result;
-};
+/**
+ *
+ * @param currencyOne
+ * @param currencyTwo
+ * @param value
+ * @param floor
+ * @returns {number}
+ */
+export const converter = (currencyOne = 1, currencyTwo = 1, value = 1, floor = 2) => (Math.floor((value * (currencyTwo / currencyOne)) * pow(10, floor))) / pow(10, floor);

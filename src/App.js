@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import moment from 'moment';
+import './App.css';
 
 // Helpers
 import {
@@ -42,6 +43,7 @@ class App extends Component {
 
 		/**
 		 * Receive currencies exchange rates
+		 * @type {Promise.<*>}
 		 */
 		const getData = api(options);
 		getData
@@ -55,19 +57,19 @@ class App extends Component {
 				console.log(err);
 			});
 
-		setInterval(() => {
-			getData
-				.then(result => {
-					console.log(`Passed ${this.state.seconds} seconds`, result);
-					this.setState({
-						rates: result.data.rates
-					});
-				})
-				.catch(err => {
-					console.log(err);
-				});
-			this.setState({seconds: this.state.seconds + 30});
-		}, 30000);
+		// setInterval(() => {
+		// 	getData
+		// 		.then((result) => {
+		// 			console.log(`Passed ${this.state.seconds} seconds`, result);
+		// 			this.setState({
+		// 				rates: result.data.rates
+		// 			});
+		// 		})
+		// 		.catch((err) => {
+		// 			console.log(err);
+		// 		});
+		// 	this.setState({seconds: this.state.seconds + 30});
+		// }, 30000);
 	}
 
 	changeCurrencyOneValue(event) {
@@ -116,23 +118,8 @@ class App extends Component {
 			rates
 		} = this.state;
 		return (
-			<div
-				style={{
-					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'center',
-					height: '100%'
-				}}
-			>
-				<div
-					style={{
-						maxWidth: 600,
-						margin: '0 auto',
-						background: '#fff',
-						boxShadow: '0 0 2px 4px hsla(0, 0%, 0%, 0.12)'
-					}}
-					className="App"
-				>
+			<div className="container">
+				<div className="App">
 					<AppBarContainer />
 					<CurrencySelector
 						currencyOne={currencyOne}
