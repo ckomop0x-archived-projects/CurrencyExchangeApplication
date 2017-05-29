@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import moment from 'moment';
+import config from './config';
 import './App.css';
 
 // Helpers
@@ -13,6 +13,7 @@ import {
 import AppBarContainer from './components/AppBarContainer';
 import CurrencyLine from './components/CurrencyLine';
 import CurrencySelector from './components/CurrencySelector';
+import Footer from './components/Footer';
 
 // Init Tap event
 injectTapEventPlugin();
@@ -26,7 +27,7 @@ class App extends Component {
 		super(props);
 		this.state = {
 			method: 'GET',
-			url: 'https://openexchangerates.org/api/latest.json?app_id=33f0f3ee6c77474f9f929749f5286615',
+			url: `https://openexchangerates.org/api/latest.json?app_id=${config.API_KEY}`,
 			seconds: 0,
 			currencyOne: 'RUB',
 			currencyTwo: 'EUR',
@@ -57,19 +58,19 @@ class App extends Component {
 				console.log(err);
 			});
 
-		// setInterval(() => {
-		// 	getData
-		// 		.then((result) => {
-		// 			console.log(`Passed ${this.state.seconds} seconds`, result);
-		// 			this.setState({
-		// 				rates: result.data.rates
-		// 			});
-		// 		})
-		// 		.catch((err) => {
-		// 			console.log(err);
-		// 		});
-		// 	this.setState({seconds: this.state.seconds + 30});
-		// }, 30000);
+		setInterval(() => {
+			getData
+				.then((result) => {
+					console.log(`Passed ${this.state.seconds} seconds`, result);
+					this.setState({
+						rates: result.data.rates
+					});
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+			this.setState({ seconds: this.state.seconds + 30 });
+		}, config.DELAY);
 	}
 
 	changeCurrencyOneValue(event) {
@@ -98,7 +99,7 @@ class App extends Component {
 		this.setState({
 			currencyTwoValue: converter(this.state.rates[this.state.currencyOne], this.state.rates[this.state.currencyTwo], this.state.currencyOneValue)
 		});
-	};
+	}
 
 	handleChangeTwo(event, index, value) {
 		this.setState({
@@ -107,7 +108,7 @@ class App extends Component {
 		this.setState({
 			currencyOneValue: converter(this.state.rates[this.state.currencyTwo], this.state.rates[this.state.currencyOne], this.state.currencyTwoValue)
 		});
-	};
+	}
 
 	render() {
 		const {
@@ -134,18 +135,15 @@ class App extends Component {
 						floatingLabelText={currencyOne}
 						value={currencyOneValue}
 						onChange={this.changeCurrencyOneValue.bind(this)}
-						onBlur={this.changeCurrencyOneValue.bind(this)}
 					/>
 					<CurrencyLine
 						floatingLabelText={currencyTwo}
 						value={currencyTwoValue}
 						onChange={this.changeCurrencyTwoValue.bind(this)}
-						onBlur={this.changeCurrencyTwoValue.bind(this)}
 					/>
-					<div style={{ textAlign: 'center', margin: 20 }}>
-						{this.state.time && `Currencies rates timestamp: ${moment(this.state.time * 1000).format('Do MMM YYYY, h:mm a')}`}
-						</div>
-					<div style={{ textAlign: 'center', margin: 20, fontWeight: 'bold' }}>&copy; 2017 <a href="https://github.com/ckomop0x">Pavel Klochkov</a></div>
+					<Footer
+						time={this.state.time}
+					/>
 				</div>
 			</div>
 

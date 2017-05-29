@@ -15,6 +15,12 @@ const className = style({
 	margin: 'auto',
 	textAlign: 'center'
 });
+const spanStyle = style({
+	height: '60px',
+	lineHeight: '60px',
+	verticalAlign: 'top',
+	display: 'inline-block'
+});
 
 const CurrencySelector = (props) => {
 	const {
@@ -36,14 +42,7 @@ const CurrencySelector = (props) => {
 				currencyOneValue={currencyOneValue}
 				currencyTwoValue={currencyTwoValue}
 			/>
-			<span
-				style={{
-					height: '60px',
-					lineHeight: '60px',
-					verticalAlign: 'top',
-					display: 'inline-block'
-				}}
-			>
+			<span className={spanStyle}>
 				{rates && converter(rates[currencyOne], rates[currencyTwo], 1, 4)}
 			</span>
 			<DropdownSelector
@@ -57,12 +56,11 @@ const CurrencySelector = (props) => {
 	);
 };
 
-
 CurrencySelector.propTypes = {
 	currencyOne: PropTypes.string,
-	currencyOneValue: PropTypes.string,
+	currencyOneValue: PropTypes.node,
 	currencyTwo: PropTypes.string,
-	currencyTwoValue: PropTypes.string,
+	currencyTwoValue: PropTypes.node,
 	handleChangeOne: PropTypes.func,
 	handleChangeTwo: PropTypes.func,
 	rates: PropTypes.object

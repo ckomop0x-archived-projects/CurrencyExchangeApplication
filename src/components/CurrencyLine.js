@@ -35,7 +35,7 @@ CurrencyLine.propTypes = {
 	floatingLabelText: PropTypes.string,
 	value: PropTypes.node,
 	onChange: PropTypes.func.isRequired,
-	onBlur: PropTypes.func.isRequired
+	onBlur: PropTypes.func
 };
 
 export default CurrencyLine;

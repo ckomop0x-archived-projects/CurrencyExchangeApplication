@@ -4,7 +4,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [Online Demo](https://ckomop0x.github.io/revolutApp) 
 
-TODO!!! Rewrite ReadMe due to current application
+Application for exchange currencies online using API of [https://openexchangerates.org](https://openexchangerates.org)
+
+Because API data for free accounts refreshes every hour you can use refresh rate 1 time per hour. Now it refreshes every 30 seconds (for the task purpose).
+   
+P.S. You can customise your own key and delay in config.js.
 
 ## Folder Structure
 
@@ -28,6 +32,7 @@ revolutApp/
     App.css       - applicaiton styles
     App.js        - main application component
     App.test.js   - application tests
+    config.js     - application variables
     index.css     - template styles
     index.js      - root application JS file
 ```

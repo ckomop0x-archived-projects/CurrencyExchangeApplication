@@ -16,7 +16,6 @@ const AppBarContainer = () => {
 			/>
 		</MuiThemeProvider>
 	);
-}
-
+};
 
 export default AppBarContainer;
