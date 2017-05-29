@@ -1,7 +1,7 @@
 {
   "name": "revolutApp",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "devDependencies": {
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
