@@ -4,9 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [Online Demo](https://ckomop0x.github.io/revolutApp) 
 
-Application for exchange currencies online using API of [https://openexchangerates.org](https://openexchangerates.org)
+The application for exchange currencies online using API of [https://openexchangerates.org](https://openexchangerates.org)
 
-Because API data for free accounts refreshes every hour you can use refresh rate 1 time per hour. Now it refreshes every 30 seconds (for the task purpose).
+API data for free accounts refreshes every hour, so you can use refresh rate 1 time per hour. Now its refreshes every 30 seconds (for the task purpose).
    
 P.S. You can customise your own key and delay in config.js.
 
