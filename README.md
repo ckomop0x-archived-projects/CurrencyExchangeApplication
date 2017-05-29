@@ -8,46 +8,35 @@ TODO!!! Rewrite ReadMe due to current application
 
 ## Folder Structure
 
-After creation, your project should look like this:
+Folder 
 
 ```
-my-app/
-  README.md
-  node_modules/
-  package.json
-  public/
-    index.html
-    favicon.ico
-  src/
-    App.css
-    App.js
-    App.test.js
-    index.css
-    index.js
-    logo.svg
+revolutApp/
+  build/          - folder for delpoy (I use it for github-pages)
+  .eslintrc       – eslint rules (JavaScript codestyle)
+  .gitignore      – what files will be hidden for git
+  README.md       - project description
+  package.json    - project dependecies
+  public/         - public files
+    index.html    – main page tempate
+    favicon.ico   – site favicon
+    manifest.json – webapp rules
+    
+	src/            - application source files
+    components/   - application components      
+    helpers/      - funtional helpers
+    App.css       - applicaiton styles
+    App.js        - main application component
+    App.test.js   - application tests
+    index.css     - template styles
+    index.js      - root application JS file
 ```
-
-For the project to build, **these files must exist with exact filenames**:
-
-* `public/index.html` is the page template;
-* `src/index.js` is the JavaScript entry point.
-
-You can delete or rename the other files.
-
-You may create subdirectories inside `src`. For faster rebuilds, only files inside `src` are processed by Webpack.<br>
-You need to **put any JS and CSS files inside `src`**, or Webpack won’t see them.
-
-Only files inside `public` can be used from `public/index.html`.<br>
-Read instructions below for using assets from JavaScript and HTML.
-
-You can, however, create more top-level directories.<br>
-They will not be included in the production build so you can use them for things like documentation.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm start || yarn start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -55,12 +44,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
+### `npm test || yarn test`
 
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](#running-tests) for more information.
 
-### `npm run build`
+### `npm run build || yarn build`
 
 Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -70,7 +59,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](#deployment) for more information.
 
-### `npm run eject`
+### `npm run eject || yarn eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
