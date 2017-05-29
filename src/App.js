@@ -97,7 +97,8 @@ class App extends Component {
 			currencyOne: value
 		});
 		this.setState({
-			currencyTwoValue: converter(this.state.rates[this.state.currencyOne], this.state.rates[this.state.currencyTwo], this.state.currencyOneValue)
+			currencyOneValue: '',
+			currencyTwoValue: ''
 		});
 	}
 
@@ -106,7 +107,8 @@ class App extends Component {
 			currencyTwo: value
 		});
 		this.setState({
-			currencyOneValue: converter(this.state.rates[this.state.currencyTwo], this.state.rates[this.state.currencyOne], this.state.currencyTwoValue)
+			currencyOneValue: '',
+			currencyTwoValue: ''
 		});
 	}
 
