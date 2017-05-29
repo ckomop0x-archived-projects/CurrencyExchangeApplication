@@ -2,20 +2,21 @@ import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // Helpers
-import api from './helpers/api';
+import {
+	api,
+	converter
+} from './helpers/';
 
 // Compoponents
-// import CurrencyTab from './components/CurrencyTab';
-// import CurrencyMenu from './components/CurrencyMenu';
-import AppBarContainer from './components/AppBarContainer'
-import CurrencyLine from './components/CurrencyLine'
+import AppBarContainer from './components/AppBarContainer';
+import CurrencyLine from './components/CurrencyLine';
 
 // Init Tap event
 injectTapEventPlugin();
 
 class App extends Component {
 	/**
-	 * Set default application state
+	 *
 	 * @param props
 	 */
 	constructor(props) {
@@ -30,54 +31,11 @@ class App extends Component {
 			currencyTwoValue: '',
 		};
 	}
-	changeCurrencyOneValue(event) {
-
-		console.log(event);
-
-		let value = '';
-
-		const tempValue = event.target.value.split('.');
-		console.log(event.target.value, tempValue, tempValue.length);
-
-		if (tempValue.length > 1 && tempValue[1].length > 1) {
-			console.log(tempValue);
-			value = [tempValue[0], tempValue[1]].join('.');
-			console.log(value);
-			// value = parseInt(tempValue[0]) + parseInt(tempValue[1]);
-			this.setState({currencyOneValue: value});
-		} else {
-			value = parseInt(tempValue[0], 10);
-			this.setState({currencyOneValue: value});
-			console.log(this.state.currencyOneValue, this.state.rates.EUR);
-
-		}
-		this.setState({currencyTwoValue: (this.state.currencyOneValue * (1/this.state.rates.EUR))})
-
-
-
-		// console.log(event.target.value.split('.'));
-		// console.log(event.target, typeof(event.target.value));
-
-		// const fomattedEvent = (event.target.value).toFixed(2);
-		// console.log('event', event, fomattedEvent);
-		// this.setState({currencyOneValue: 100});
-		// if (event.target.value < 0 || event.target.value === '' || event.target.value === 0) {
-		// 	this.setState({currencyOneValue: 100});
-		// }
-	}
-
-	changeCurrencyTwoValue(event) {
-		console.log(event.target);
-		if (event.target.value < 0 || event.target.value === '' || event.target.value === 0) {
-			event.target.value = 0;
-		}
-	}
 
 	componentDidMount() {
 		const options = {
 			method: this.state.method,
-			url: this.state.url,
-
+			url: this.state.url
 		};
 
 		/**
@@ -85,18 +43,18 @@ class App extends Component {
 		 */
 		const getData = api(options);
 		getData
-			.then(result => {
+			.then((result) => {
 				// console.log(result);
 				this.setState({
-						rates: {
-							USD: 1,
-							EUR: result.data.rates.EUR,
-							GBP: result.data.rates.GBP
-						}
-					});
+					rates: {
+						USD: 1,
+						EUR: result.data.rates.EUR,
+						GBP: result.data.rates.GBP
+					}
+				});
 			})
-			.catch(err => {
-				console.log(err);
+			.catch((err) => {
+				// console.log(err);
 			});
 
 		// setInterval(() => {
@@ -117,33 +75,53 @@ class App extends Component {
 		// 	this.setState({seconds: this.state.seconds + 30});
 		// }, 30000);
 	}
-  render() {
-    return (
-      <div className="App" style={{
-	      maxWidth: 600,
-	      margin: '0 auto',
-	      boxShadow: '0 0 2px 4px hsla(0, 0%, 0%, 0.12)'
-      }}>
-	      <AppBarContainer />
-	      <div style={{
-	      	textAlign: 'center',
-		      margin: 20
-	      }}>1 EUR =  {this.state.rates &&  this.state.rates.EUR}$</div>
-	      <CurrencyLine
-		      floatingLabelText={this.state.currencyOne}
-		      value={this.state.currencyOneValue}
-		      onChange={this.changeCurrencyOneValue.bind(this)}
-		      onBlur={this.changeCurrencyOneValue.bind(this)}
-	      />
-	      <CurrencyLine
-		      floatingLabelText={this.state.currencyTwo}
-		      value={this.state.currencyTwoValue}
-		      onChange={this.changeCurrencyTwoValue.bind(this)}
-		      onBlur={this.changeCurrencyTwoValue.bind(this)}
-	      />
-      </div>
-    );
-  }
+
+	changeCurrencyOneValue(event) {
+		this.setState({ currencyOneValue: event.target.value });
+		this.setState({ currencyTwoValue: converter(this.state.rates[this.state.currencyOne], this.state.rates[this.state.currencyTwo], event.target.value) });
+	}
+
+	changeCurrencyTwoValue(event) {
+		this.setState({ currencyTwoValue: event.target.value });
+		this.setState({ currencyOneValue: converter(this.state.rates[this.state.currencyTwo], this.state.rates[this.state.currencyOne], event.target.value) });
+	}
+
+	render() {
+		const {
+			currencyOne,
+			currencyTwo,
+			currencyOneValue,
+			rates
+		} = this.state;
+		return (
+			<div
+				style={{
+					maxWidth: 600,
+					margin: '0 auto',
+					boxShadow: '0 0 2px 4px hsla(0, 0%, 0%, 0.12)'
+				}}
+				className="App"
+
+			>
+				<AppBarContainer />
+				<div style={{ textAlign: 'center', margin: 20	}} >
+					1 {currencyOne} = {rates && rates.EUR} {currencyTwo}
+				</div>
+				<CurrencyLine
+					floatingLabelText={currencyOne}
+					value={currencyOneValue}
+					onChange={this.changeCurrencyOneValue.bind(this)}
+					onBlur={this.changeCurrencyOneValue.bind(this)}
+				/>
+				<CurrencyLine
+					floatingLabelText={this.state.currencyTwo}
+					value={this.state.currencyTwoValue}
+					onChange={this.changeCurrencyTwoValue.bind(this)}
+					onBlur={this.changeCurrencyTwoValue.bind(this)}
+				/>
+			</div>
+		);
+	}
 }
 
 export default App;
