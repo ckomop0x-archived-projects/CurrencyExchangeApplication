@@ -1,3 +1,4 @@
 export { api } from './api';
-export { converter } from './converter';
+export { currencyConverter } from './currencyConverter';
+export { inputFilter } from './inputFilter';
 export { pow } from './pow';

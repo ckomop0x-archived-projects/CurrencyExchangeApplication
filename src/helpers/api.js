@@ -6,7 +6,7 @@ import axios from 'axios';
  * @returns {Promise.<*>}
  */
 export const api = options => axios({
-	method: options.method, // api method
-	url: options.url,  // api URL
-	headers: { 'Content-Type': 'application/json' }
+  method: options.method, // api method
+  url: options.url,  // api URL
+  headers: { 'Content-Type': 'application/json' }
 });

@@ -3,14 +3,10 @@
   "rules": {
     "comma-dangle": 0,
     "no-tabs": 0,
-    "indent": [2,"tab",
-      {
-        "SwitchCase": 1
-      }
-    ],
+    "indent": 2,
     "max-len": 0,
-    "react/jsx-indent": [2,"tab"],
-    "react/jsx-indent-props": [2,"tab"],
+    "react/jsx-indent": 2,
+    "react/jsx-indent-props": 2,
     "react/jsx-filename-extension": 0,
     "react/require-default-props": 0,
     "react/forbid-prop-types": 0,
