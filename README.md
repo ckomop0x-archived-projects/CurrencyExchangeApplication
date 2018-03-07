@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Currency Exchange App
 
-[Online Demo](https://ckomop0x.github.io/CurrencyExchangeApplication) 
+[Online Application](https://ckomop0x.github.io/CurrencyExchangeApplication) 
 
 The application for exchange currencies online using API of [https://openexchangerates.org](https://openexchangerates.org)
 
