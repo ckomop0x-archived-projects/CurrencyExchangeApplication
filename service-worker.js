@@ -11,10 +11,10 @@
  * See https://goo.gl/2aRDsh
  */
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.2/workbox-sw.js");
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/CurrencyExchangeApplication/precache-manifest.fad777160b7e0e757339a8cdac3bf87d.js"
+  "/CurrencyExchangeApplication/precache-manifest.ded3cad8f160119535fb7a2e08f38424.js"
 );
 
 workbox.clientsClaim();

@@ -8,15 +8,15 @@ self.__precacheManifest = [
     "url": "/CurrencyExchangeApplication/static/js/main.f15feee9.chunk.js"
   },
   {
-    "revision": "4b702ea466bff8be08f0",
-    "url": "/CurrencyExchangeApplication/static/js/1.4b702ea4.chunk.js"
+    "revision": "4cba5b877bb1127b2db9",
+    "url": "/CurrencyExchangeApplication/static/js/1.4cba5b87.chunk.js"
   },
   {
     "revision": "f15feee95dc3498d865d",
     "url": "/CurrencyExchangeApplication/static/css/main.c316656a.chunk.css"
   },
   {
-    "revision": "dac7b3eb7b183a6f48ba98733e4e8ef8",
+    "revision": "2402865e8fb1edf05a9f8f868a924e86",
     "url": "/CurrencyExchangeApplication/index.html"
   }
 ];
