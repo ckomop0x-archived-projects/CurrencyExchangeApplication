@@ -1,13 +1,6 @@
 {
-  "main.css": "/CurrencyExchangeApplication/static/css/main.75c2d2ce.chunk.css",
-  "main.js": "/CurrencyExchangeApplication/static/js/main.9579f862.chunk.js",
-  "main.js.map": "/CurrencyExchangeApplication/static/js/main.9579f862.chunk.js.map",
-  "static/js/1.656892ae.chunk.js": "/CurrencyExchangeApplication/static/js/1.656892ae.chunk.js",
-  "static/js/1.656892ae.chunk.js.map": "/CurrencyExchangeApplication/static/js/1.656892ae.chunk.js.map",
-  "runtime~main.js": "/CurrencyExchangeApplication/static/js/runtime~main.8f00d2d1.js",
-  "runtime~main.js.map": "/CurrencyExchangeApplication/static/js/runtime~main.8f00d2d1.js.map",
-  "static/css/main.75c2d2ce.chunk.css.map": "/CurrencyExchangeApplication/static/css/main.75c2d2ce.chunk.css.map",
-  "index.html": "/CurrencyExchangeApplication/index.html",
-  "precache-manifest.63659c03bcb3eb37724adf7e9917367e.js": "/CurrencyExchangeApplication/precache-manifest.63659c03bcb3eb37724adf7e9917367e.js",
-  "service-worker.js": "/CurrencyExchangeApplication/service-worker.js"
+  "main.css": "static/css/main.160411a7.css",
+  "main.css.map": "static/css/main.160411a7.css.map",
+  "main.js": "static/js/main.d1b761e2.js",
+  "main.js.map": "static/js/main.d1b761e2.js.map"
 }
