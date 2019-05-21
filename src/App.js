@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import config from './config';
 import './App.css';
 
 // Helpers
 import {
-    api,
-    currencyConverter,
-    inputFilter
+  api,
+  currencyConverter,
+  inputFilter
 } from './helpers/';
 
-// Compoponents
+// Components
 import AppBarContainer from './components/AppBarContainer';
 import CurrencyLine from './components/CurrencyLine';
 import CurrencySelector from './components/CurrencySelector';
@@ -20,134 +20,129 @@ import Footer from './components/Footer';
 injectTapEventPlugin();
 
 class App extends Component {
-    /**
-     *
-     * @param props
-     */
-    constructor(props) {
-        super(props);
-        this.state = {
-            method: 'GET',
-            url: `https://openexchangerates.org/api/latest.json?app_id=${config.API_KEY}`,
-            seconds: 0,
-            currencyOne: 'EUR',
-            currencyTwo: 'USD',
-            currencyOneValue: '',
-            currencyTwoValue: '',
-        };
-    }
+  /**
+   *
+   * @param props
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      method: 'GET',
+      url: `https://openexchangerates.org/api/latest.json?app_id=${config.API_KEY}`,
+      seconds: 0,
+      currencyOne: 'EUR',
+      currencyTwo: 'USD',
+      currencyOneValue: '',
+      currencyTwoValue: '',
+    };
+  }
 
-    componentDidMount() {
-        const options = {
-            method: this.state.method,
-            url: this.state.url
-        };
-        const getData = api(options);
+  componentDidMount() {
+    const getData = api({
+      method: this.state.method,
+      url: this.state.url
+    });
 
-        /**
-         * Receive currencies exchange rates
-         * @type {Promise.<*>}
-         */
-        getData
-            .then((result) => {
-                this.setState({
-                    rates: result.data.rates,
-                    time: result.data.timestamp
-                });
-            })
-            .catch((err) => {
-                this.setState({
-                    error: true,
-                    errorText: 'Can\'t connect',
-                    message: `${err}`
-                });
-            });
-
-        setInterval(() => {
-            getData.then((result) => {
-                this.setState({
-                    rates: result.data.rates
-                });
-            }).catch((err) => {
-                this.setState({
-                    error: true,
-                    errorText: 'Can\'t connect',
-                    message: `${err}`
-                });
-            });
-
-            this.setState({seconds: this.state.seconds + 30});
-        }, config.DELAY);
-    }
-
-    changeCurrencyOneValue(event) {
-        const {currencyOne, currencyTwo, rates} = this.state;
-
+    getData
+      .then(({data: {rates, timestamp}}) => {
         this.setState({
-            currencyOneValue: inputFilter(event.target.value)
+          rates,
+          timestamp
         });
+      })
+      .catch((err) => {
         this.setState({
-            currencyTwoValue: currencyConverter(rates[currencyOne], rates[currencyTwo], inputFilter(event.target.value))
+          error: true,
+          errorText: 'Can\'t connect',
+          message: `${err}`
         });
-    }
+      });
 
-    changeCurrencyTwoValue(event) {
-        const {currencyOne, currencyTwo, rates} = this.state;
+    setInterval(() => {
+      getData.then((result) => {
         this.setState({
-            currencyTwoValue: inputFilter(event.target.value)
+          rates: result.data.rates
         });
+      }).catch((err) => {
         this.setState({
-            currencyOneValue: currencyConverter(rates[currencyTwo], rates[currencyOne], inputFilter(event.target.value))
+          error: true,
+          errorText: 'Can\'t connect',
+          message: `${err}`
         });
-    }
+      });
 
-    handleChangeOne(event, index, value) {
-        this.setState({
-            currencyOne: value
-        });
-        this.setState({
-            currencyOneValue: '',
-            currencyTwoValue: ''
-        });
-    }
+      this.setState({seconds: this.state.seconds + 30});
+    }, config.DELAY);
+  }
 
-    handleChangeTwo(event, index, value) {
-        this.setState({
-            currencyTwo: value
-        });
-        this.setState({
-            currencyOneValue: '',
-            currencyTwoValue: ''
-        });
-    }
+  changeCurrencyOneValue(event) {
+    const {currencyOne, currencyTwo, rates} = this.state;
 
-    render() {
-        const {currencyOne, currencyTwo, currencyOneValue, currencyTwoValue, rates, time} = this.state;
+    this.setState({
+      currencyOneValue: inputFilter(event.target.value)
+    });
+    this.setState({
+      currencyTwoValue: currencyConverter(rates[currencyOne], rates[currencyTwo], inputFilter(event.target.value))
+    });
+  }
 
-        return (
-            <div className="container">
-                <div className="App">
-                    <AppBarContainer />
-                    <CurrencySelector currencyOne={currencyOne}
-                                      currencyTwo={currencyTwo}
-                                      currencyOneValue={currencyOneValue}
-                                      currencyTwoValue={currencyTwoValue}
-                                      rates={rates}
-                                      handleChangeOne={this.handleChangeOne.bind(this)}
-                                      handleChangeTwo={this.handleChangeTwo.bind(this)} />
-                    <CurrencyLine
-                        floatingLabelText={currencyOne}
-                        value={currencyOneValue}
-                        onChange={this.changeCurrencyOneValue.bind(this)} />
-                    <CurrencyLine
-                        floatingLabelText={currencyTwo}
-                        value={currencyTwoValue}
-                        onChange={this.changeCurrencyTwoValue.bind(this)} />
-                    <Footer time={time} />
-                </div>
-            </div>
-        );
-    }
+  changeCurrencyTwoValue(event) {
+    const {currencyOne, currencyTwo, rates} = this.state;
+    this.setState({
+      currencyTwoValue: inputFilter(event.target.value)
+    });
+    this.setState({
+      currencyOneValue: currencyConverter(rates[currencyTwo], rates[currencyOne], inputFilter(event.target.value))
+    });
+  }
+
+  handleChangeOne(event, index, value) {
+    this.setState({
+      currencyOne: value
+    });
+    this.setState({
+      currencyOneValue: '',
+      currencyTwoValue: ''
+    });
+  }
+
+  handleChangeTwo(event, index, value) {
+    this.setState({
+      currencyTwo: value
+    });
+    this.setState({
+      currencyOneValue: '',
+      currencyTwoValue: ''
+    });
+  }
+
+  render() {
+    const {currencyOne, currencyTwo, currencyOneValue, currencyTwoValue, rates, timestamp} = this.state;
+
+    return (
+      <div className="container">
+        <div className="App">
+          <AppBarContainer/>
+          <CurrencySelector currencyOne={currencyOne}
+                            currencyTwo={currencyTwo}
+                            currencyOneValue={currencyOneValue}
+                            currencyTwoValue={currencyTwoValue}
+                            rates={rates}
+                            handleChangeOne={this.handleChangeOne.bind(this)}
+                            handleChangeTwo={this.handleChangeTwo.bind(this)}/>
+          <CurrencyLine
+            floatingLabelText={currencyOne}
+            value={currencyOneValue}
+            onChange={this.changeCurrencyOneValue.bind(this)}/>
+          <CurrencyLine
+            floatingLabelText={currencyTwo}
+            value={currencyTwoValue}
+            onChange={this.changeCurrencyTwoValue.bind(this)}/>
+          <Footer time={timestamp}/>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
