@@ -1,41 +1,26 @@
 import React, { Component } from 'react';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import config from './config';
 import './App.css';
-
-// Helpers
 import {
   api,
   currencyConverter,
   inputFilter
 } from './helpers/';
-
-// Components
 import AppBarContainer from './components/AppBarContainer';
 import CurrencyLine from './components/CurrencyLine';
 import CurrencySelector from './components/CurrencySelector';
 import Footer from './components/Footer';
 
-// Init Tap event
-injectTapEventPlugin();
-
 class App extends Component {
-  /**
-   *
-   * @param props
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      method: 'GET',
-      url: `https://openexchangerates.org/api/latest.json?app_id=${config.API_KEY}`,
-      seconds: 0,
-      currencyOne: 'EUR',
-      currencyTwo: 'USD',
-      currencyOneValue: '',
-      currencyTwoValue: '',
-    };
-  }
+  state = {
+    method: 'GET',
+    url: `https://openexchangerates.org/api/latest.json?app_id=${config.API_KEY}`,
+    seconds: 0,
+    currencyOne: 'EUR',
+    currencyTwo: 'USD',
+    currencyOneValue: '',
+    currencyTwoValue: '',
+  };
 
   componentDidMount() {
     const getData = api({

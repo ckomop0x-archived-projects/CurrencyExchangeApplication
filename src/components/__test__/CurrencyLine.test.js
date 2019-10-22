@@ -2,7 +2,6 @@ import expect from 'expect';
 import expectJSX from 'expect-jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import Shallow from 'react-test-renderer/shallow';
 // Component
 import CurrencyLine from '../CurrencyLine';
