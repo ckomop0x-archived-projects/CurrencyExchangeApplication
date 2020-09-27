@@ -2,13 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { style } from 'typestyle';
 
-// Components
 import DropdownSelector from './DropdownSelector';
 
-// Helpers
-import {
-  currencyConverter
-} from '../helpers/';
+import { currencyConverter } from '../helpers/';
 
 const className = style({
   width: '320px',
@@ -43,8 +39,8 @@ const CurrencySelector = (props) => {
         currencyTwoValue={currencyTwoValue}
       />
       <span className={spanStyle}>
-				{rates && currencyConverter(rates[currencyOne], rates[currencyTwo], 1, 4)}
-			</span>
+        {rates && currencyConverter(rates[currencyOne], rates[currencyTwo], 1, 4)}
+      </span>
       <DropdownSelector
         rates={rates}
         currency={currencyTwo}
