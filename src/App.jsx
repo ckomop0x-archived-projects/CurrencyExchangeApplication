@@ -77,6 +77,7 @@ const App = () => {
 
   return (
     <div className="container">
+      {error && <div>{error.text}</div>}
       {rates && (
         <main className="App">
           <AppBarContainer />
