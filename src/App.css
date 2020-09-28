@@ -1,5 +1,5 @@
 @media (min-width: 320px) {
-  .App{
+  .App {
     max-width: 600px;
     margin: 0 auto;
     background: #fff;
@@ -15,8 +15,8 @@
 }
 
 @media (min-width: 640px) {
-  .App{
-    box-shadow: 0 0 2px 4px hsla(0, 0%, 0%, 0.12);
+  .App {
+    border: 1px solid gray;
     height: auto;
   }
   .container {

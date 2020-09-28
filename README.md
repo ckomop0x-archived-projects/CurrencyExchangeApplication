@@ -1,4 +1,8 @@
-![CI/CD](https://github.com/ckomop0x/CurrencyExchangeApplication/workflows/CI/CD/badge.svg)
+![CI/CD](https://github.com/ckomop0x/CurrencyExchangeApplication/workflows/CI/CD-Prod/badge.svg)
+![CI/CD](https://github.com/ckomop0x/CurrencyExchangeApplication/workflows/CI/CD-Dev/badge.svg)
+[![codecov](https://codecov.io/gh/ckomop0x/CurrencyExchangeApplication/branch/master/graph/badge.svg)](https://codecov.io/gh/ckomop0x/CurrencyExchangeApplication)
+[![Codecov](https://img.shields.io/codecov/c/github/ckomop0x/CurrencyExchangeApplication)](https://codecov.io/gh/ckomop0x/CurrencyExchangeApplication)
+![License](https://img.shields.io/github/license/ckomop0x/CurrencyExchangeApplication)
 
 ## Currency Exchange App
 

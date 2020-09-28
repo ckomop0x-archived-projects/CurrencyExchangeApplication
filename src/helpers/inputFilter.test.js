@@ -1,11 +1,9 @@
-import expect from 'expect';
-
 import { inputFilter } from './inputFilter';
 
 describe('inputFilter must filter input value to currency mask', () => {
-
   describe('with a single digit', () => {
     const value = '5';
+
     it('returns a 5', () => {
       expect(inputFilter(value)).toEqual('5');
     });
@@ -86,19 +84,17 @@ describe('inputFilter must filter input value to currency mask', () => {
     it('returns a empty string', () => {
       expect(inputFilter(value)).toEqual('');
     });
-  })
+  });
 
   describe('with no value', () => {
     it('returns a empty string', () => {
       expect(inputFilter()).toEqual('');
     });
-  })
+  });
   describe('with crazy string', () => {
     const value = 'abcdef000000234243.234324';
     it('returns a empty string', () => {
       expect(inputFilter(value)).toEqual('234243.23');
     });
-  })
-
-
-})
+  });
+});

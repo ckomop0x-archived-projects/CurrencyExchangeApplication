@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CurrencyLine /> Should render with the value 100 1`] = `ShallowWrapper {}`;
+
+exports[`<CurrencyLine /> Should render without crashing 1`] = `ShallowWrapper {}`;

@@ -5,8 +5,9 @@ export const inputFilter = (value = '') => {
   const currencyMaskWithDot = /(?!0)(?:\d+)(?:\.)/;
   if (currencyMaskWithDot.test(value) && !currencyMaskWithOne.test(value)) {
     line = currencyMaskWithDot.exec(value);
-  } else if (currencyMask.test(value)){
+  } else if (currencyMask.test(value)) {
     line = currencyMask.exec(value);
   }
-  return line;
-}
+
+  return line[0] || '';
+};

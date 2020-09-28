@@ -1,0 +1,14 @@
+.currencySelector {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.currencyRate {
+  height: 60px;
+  line-height: 60px;
+  vertical-align: top;
+  display: inline-block;
+}
