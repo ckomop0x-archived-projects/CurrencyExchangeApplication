@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.css": "/CurrencyExchangeApplication/static/css/main.5e8383ab.chunk.css",
-    "main.js": "/CurrencyExchangeApplication/static/js/main.b5bb0496.chunk.js",
-    "main.js.map": "/CurrencyExchangeApplication/static/js/main.b5bb0496.chunk.js.map",
-    "runtime-main.js": "/CurrencyExchangeApplication/static/js/runtime-main.b915d5c4.js",
-    "runtime-main.js.map": "/CurrencyExchangeApplication/static/js/runtime-main.b915d5c4.js.map",
-    "static/js/2.18e9b49f.chunk.js": "/CurrencyExchangeApplication/static/js/2.18e9b49f.chunk.js",
-    "static/js/2.18e9b49f.chunk.js.map": "/CurrencyExchangeApplication/static/js/2.18e9b49f.chunk.js.map",
+    "main.css": "/CurrencyExchangeApplication/static/css/main.7e3c6bb5.chunk.css",
+    "main.js": "/CurrencyExchangeApplication/static/js/main.5d4a390e.chunk.js",
+    "main.js.map": "/CurrencyExchangeApplication/static/js/main.5d4a390e.chunk.js.map",
+    "runtime-main.js": "/CurrencyExchangeApplication/static/js/runtime-main.33d723c6.js",
+    "runtime-main.js.map": "/CurrencyExchangeApplication/static/js/runtime-main.33d723c6.js.map",
+    "static/js/2.fe33ad21.chunk.js": "/CurrencyExchangeApplication/static/js/2.fe33ad21.chunk.js",
+    "static/js/2.fe33ad21.chunk.js.map": "/CurrencyExchangeApplication/static/js/2.fe33ad21.chunk.js.map",
     "index.html": "/CurrencyExchangeApplication/index.html",
-    "precache-manifest.bb1271b82cbc3195e11c1101d12ebae5.js": "/CurrencyExchangeApplication/precache-manifest.bb1271b82cbc3195e11c1101d12ebae5.js",
+    "precache-manifest.7fd17a561d6157e1e31c60fe71a3b054.js": "/CurrencyExchangeApplication/precache-manifest.7fd17a561d6157e1e31c60fe71a3b054.js",
     "service-worker.js": "/CurrencyExchangeApplication/service-worker.js",
-    "static/css/main.5e8383ab.chunk.css.map": "/CurrencyExchangeApplication/static/css/main.5e8383ab.chunk.css.map"
+    "static/css/main.7e3c6bb5.chunk.css.map": "/CurrencyExchangeApplication/static/css/main.7e3c6bb5.chunk.css.map",
+    "static/js/2.fe33ad21.chunk.js.LICENSE.txt": "/CurrencyExchangeApplication/static/js/2.fe33ad21.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.b915d5c4.js",
-    "static/js/2.18e9b49f.chunk.js",
-    "static/css/main.5e8383ab.chunk.css",
-    "static/js/main.b5bb0496.chunk.js"
+    "static/js/runtime-main.33d723c6.js",
+    "static/js/2.fe33ad21.chunk.js",
+    "static/css/main.7e3c6bb5.chunk.css",
+    "static/js/main.5d4a390e.chunk.js"
   ]
 }
