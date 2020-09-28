@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import { style } from 'typestyle';
 import TextField from '@material-ui/core/TextField';
 
-const CurrencyLine = (props) => {
+const CurrencyLine = ({ value, onChange }) => {
   const className = style({
     margin: 20,
     width: '90% !important',
     boxSizing: 'border-box'
   });
-  const { value, onChange } = props;
 
   return <TextField className={className} type="text" value={value} onChange={onChange} />;
 };
@@ -20,4 +19,4 @@ CurrencyLine.propTypes = {
   onChange: PropTypes.func.isRequired
 };
 
-export default CurrencyLine;
+export default React.memo(CurrencyLine);

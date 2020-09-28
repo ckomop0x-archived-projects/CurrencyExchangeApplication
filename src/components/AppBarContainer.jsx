@@ -20,4 +20,4 @@ const AppBarContainer = () => (
   </AppBar>
 );
 
-export default AppBarContainer;
+export default React.memo(AppBarContainer);
